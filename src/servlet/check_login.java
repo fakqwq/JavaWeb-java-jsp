@@ -1,8 +1,6 @@
 package servlet;
 
-import dao.StudentD;
 import dao.TeacherD;
-import vo.Student;
 import vo.Teacher;
 
 import javax.servlet.ServletException;

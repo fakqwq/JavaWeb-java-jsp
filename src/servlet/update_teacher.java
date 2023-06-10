@@ -1,6 +1,5 @@
 package servlet;
 
-import dao.StudentD;
 import dao.TeacherD;
 import vo.Teacher;
 

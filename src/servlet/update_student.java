@@ -1,6 +1,5 @@
 package servlet;
 
-import dao.ScoreD;
 import dao.StudentD;
 
 import javax.servlet.ServletException;
@@ -33,6 +32,7 @@ public class update_student extends HttpServlet {
         String stuname = request.getParameter("stuname");
         String stusex = request.getParameter("stusex");
         String stumajor = request.getParameter("stumajor");
+        System.out.println(stuno + stuname + stusex + stumajor);
 
         try {
          // 更新学生信息
@@ -43,6 +43,6 @@ public class update_student extends HttpServlet {
         }
 
         // 重定向到学生信息页面
-        response.sendRedirect("one_page_student");
+        response.sendRedirect("main.jsp");
     }
 }

@@ -85,11 +85,24 @@
 <div class="position-relative">
     <div class="position-absolute top-80 start-50 translate-middle">
         <?xml version="1.0" encoding="UTF-8"?>
-        <svg width="10 0" height="100" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.85786 18C6.23858 21 4 24 4 24C4 24 12.9543 36 24 36C25.3699 36 26.7076 35.8154 28 35.4921M20.0318 12.5C21.3144 12.1816 22.6414 12 24 12C35.0457 12 44 24 44 24C44 24 41.7614 27 38.1421 30" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M20.3142 20.6211C19.4981 21.5109 19 22.6972 19 23.9998C19 26.7612 21.2386 28.9998 24 28.9998C25.3627 28.9998 26.5981 28.4546 27.5 27.5705" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M42 42L6 6" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" fill="none" viewBox="0 0 24 24">
+            <style>
+                .eye-off {ubic-bezier(0.99, -0.1, 0.01, 1.02) alternate;
+                    stroke-dashoffset: 100;
+                    stroke-dasharray: 100;
+                }
+
+                @keyframes eye-off {
+                    to {
+                        stroke-dashoffset: 0;
+                    }
+                }
+            </style>
+            <path stroke="#0A0A30" stroke-width="1.5" d="M19.195 11.31c.325.41.325.97 0 1.38-1.114 1.4-3.916 4.45-7.195 4.45-3.28 0-6.08-3.05-7.195-4.45a1.097 1.097 0 010-1.38C5.92 9.91 8.721 6.86 12 6.86c3.28 0 6.08 3.05 7.195 4.45z"/>
+            <circle cx="12" cy="12" r="1.972" stroke="#0A0A30" stroke-width="1.5"/>
+            <path class="eye-off" stroke="#265BFF" stroke-linecap="round" stroke-width="1.5" d="M18.514 5.487L5.487 18.514"/>
         </svg>
+
         <h1>请登录！</h1>
     </div>
 </div>
@@ -109,15 +122,82 @@
             <div class="modal-body">
                 <main class="container col-xl-10 col-xxl-12 px-4">
                     <div class="row align-items-center g-lg-5">
-                        <div class="col-lg-7 text-center text-lg-start">
-                            <h1 class="display-4 fw-bold lh-1 mb-3">登录后查看信息</h1>
-                            <p class="col-lg-10 fs-4">以及用于管理</p>
-                        </div>
-                        <div class="col-md-12 mx-auto col-lg-5">
+                        <div class="col-md-12 mx-auto col-lg-5 ">
                             <form class="text-center p-4 p-md-5 border rounded-3 bg-light" method="post" action="check_login">
-                                <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="120" height="120">
+                                <div class="loadingio-spinner-bean-eater-1e10jkeuwis"><div class="ldio-h3u92sv3fpi">
+                                    <div><div></div><div></div><div></div></div><div><div></div><div></div><div></div></div>
+                                </div></div>
+                                <style type="text/css">
+                                    @keyframes ldio-h3u92sv3fpi-1 {
+                                        0% { transform: rotate(0deg) }
+                                        50% { transform: rotate(-45deg) }
+                                        100% { transform: rotate(0deg) }
+                                    }
+                                    @keyframes ldio-h3u92sv3fpi-2 {
+                                        0% { transform: rotate(180deg) }
+                                        50% { transform: rotate(225deg) }
+                                        100% { transform: rotate(180deg) }
+                                    }
+                                    .ldio-h3u92sv3fpi > div:nth-child(2) {
+                                        transform: translate(-15px,0);
+                                    }
+                                    .ldio-h3u92sv3fpi > div:nth-child(2) div {
+                                        position: absolute;
+                                        top: 40px;
+                                        left: 40px;
+                                        width: 120px;
+                                        height: 60px;
+                                        border-radius: 120px 120px 0 0;
+                                        background: #f8b26a;
+                                        animation: ldio-h3u92sv3fpi-1 1s linear infinite;
+                                        transform-origin: 60px 60px
+                                    }
+                                    .ldio-h3u92sv3fpi > div:nth-child(2) div:nth-child(2) {
+                                        animation: ldio-h3u92sv3fpi-2 1s linear infinite
+                                    }
+                                    .ldio-h3u92sv3fpi > div:nth-child(2) div:nth-child(3) {
+                                        transform: rotate(-90deg);
+                                        animation: none;
+                                    }@keyframes ldio-h3u92sv3fpi-3 {
+                                         0% { transform: translate(190px,0); opacity: 0 }
+                                         20% { opacity: 1 }
+                                         100% { transform: translate(70px,0); opacity: 1 }
+                                     }
+                                    .ldio-h3u92sv3fpi > div:nth-child(1) {
+                                        display: block;
+                                    }
+                                    .ldio-h3u92sv3fpi > div:nth-child(1) div {
+                                        position: absolute;
+                                        top: 92px;
+                                        left: -8px;
+                                        width: 16px;
+                                        height: 16px;
+                                        border-radius: 50%;
+                                        background: #e15b64;
+                                        animation: ldio-h3u92sv3fpi-3 1s linear infinite
+                                    }
+                                    .ldio-h3u92sv3fpi > div:nth-child(1) div:nth-child(1) { animation-delay: -0.67s }
+                                    .ldio-h3u92sv3fpi > div:nth-child(1) div:nth-child(2) { animation-delay: -0.33s }
+                                    .ldio-h3u92sv3fpi > div:nth-child(1) div:nth-child(3) { animation-delay: 0s }
+                                    .loadingio-spinner-bean-eater-1e10jkeuwis {
+                                        width: 200px;
+                                        height: 200px;
+                                        display: inline-block;
+                                        overflow: hidden;
+                                        background: #ffffff;
+                                    }
+                                    .ldio-h3u92sv3fpi {
+                                        width: 100%;
+                                        height: 100%;
+                                        position: relative;
+                                        transform: translateZ(0) scale(1);
+                                        backface-visibility: hidden;
+                                        transform-origin: 0 0; /* see note above */
+                                    }
+                                    .ldio-h3u92sv3fpi div { box-sizing: content-box; }
+                                    /* generated by https://loading.io/ */
+                                </style>
                                 <h1 class="h3 mb-3 fw-normal">请登录</h1>
-
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInputUserName" name="user" placeholder="UserName">
                                     <label for="floatingInputUserName">用户名</label>

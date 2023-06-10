@@ -26,7 +26,6 @@ public class check_register extends HttpServlet {
         String password = request.getParameter("password1");
         String code = request.getParameter("code");
 
-        System.out.println(email + " " + user + " " + password + " " + code);
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
 

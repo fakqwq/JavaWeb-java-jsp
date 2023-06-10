@@ -96,6 +96,7 @@ public class StudentD {
         ps.setString(3, major);
         ps.setString(4, id);
         ps.executeUpdate();
+        System.out.println("修改成功");
         closeConnection();
     }
 

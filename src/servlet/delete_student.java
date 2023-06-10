@@ -2,7 +2,6 @@ package servlet;
 
 import dao.ScoreD;
 import dao.StudentD;
-import vo.Score;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

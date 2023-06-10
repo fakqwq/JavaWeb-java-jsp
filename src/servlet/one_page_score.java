@@ -1,9 +1,7 @@
 package servlet;
 
 import dao.ScoreD;
-import dao.StudentD;
 import vo.Score;
-import vo.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +12,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.regex.Pattern;
 
 @WebServlet("/one_page_score")
 public class one_page_score extends HttpServlet {
@@ -35,10 +31,9 @@ public class one_page_score extends HttpServlet {
         String key = request.getParameter("id");
         String paramID = (String) session.getAttribute("paramId");
 
-        //这个代码块尝试从数据库中查找所有的成绩，将其添加到一个成绩列表中，并将该列表设置为会话属性，以便在JSP页面中显示。
         if (key == null) {
-
-            //这个代码块尝试从数据库中查找所有的成绩，将其添加到一个成绩列表中，并将该列表设置为会话属性，以便在JSP页面中显示。
+            //如果key为空，这个代码块尝试从数据库中查找所有的成绩，
+            //将其添加到一个成绩列表中，并将该列表设置为会话属性，以便在JSP页面中显示。
             try {
                 ScoreD scoD = new ScoreD();
                 ArrayList<Score> stus = scoD.getOnePage();
@@ -61,11 +56,11 @@ public class one_page_score extends HttpServlet {
                 } catch (Exception e) {
                     out.print(e);
                 }
-            }
+        }
 
+        //用来确保在查看单独学生成绩并进行修改后保持在该学生的成绩页面。
         if (paramID != null){
             ScoreD scoreD = new ScoreD();
-            // 这段代码尝试从数据库中查找一个特定的成绩，将其添加到一个成绩列表中，并将该列表设置为会话属性，以便在JSP页面中显示。
             try {
                 Score score = scoreD.findWithId(paramID);
                 ArrayList<Score> scores = new ArrayList<>();

@@ -9,10 +9,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="vo.Student" %>
 <%@ page import="vo.Teacher" %>
-<%@ page import="dao.TeacherD" %>
 <%@ page import="vo.Score" %>
 <%@ page import="dao.StudentD" %>
-<%@ page import="java.lang.*" %>
+<%@ page import="dao.ScoreD" %>
 <html>
 <head>
     <title>Title</title>
@@ -29,21 +28,13 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
     <script src="JavaScript/semantic.min.js"></script>
+    <script src="JavaScript/toGetScore.js?v=4567"></script>
+    <script src="JavaScript/toGetStudent.js"></script>
 </head>
 <body>
 <%
     //获取session中的教师信息
     Teacher teacher = (Teacher) session.getAttribute("info");
-    //这个ArrayList是用来存放一页的学生信息的
-    //具体用法是在servlet中将所有学生信息存放在一个ArrayList中
-    //然后将这个ArrayList分成多个ArrayList，每个ArrayList存放一页的学生信息
-    //然后将这些ArrayList存放在session中
-    //这里就是从session中获取一页的学生信息
-    //这里的ArrayList泛型是Student，所以要强制转换成ArrayList<Student>
-    //session.getAttribute是Object类型，所以要强制转换成ArrayList<Student>
-    //session.getAttribute用法和request.getParameter用法一样
-    //是用来获取session中的属性的
-    ArrayList<Student> stus = (ArrayList<Student>) session.getAttribute("onePageStudent");
 %>
 <main>
     <header>
@@ -58,7 +49,7 @@
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <div id="logo">
                             <h1><%=teacher.getName()%></h1>
-                            <li><a style="color: white" onclick="return confirm('确认退出?');" href="exit">退出登录</a></li>
+                            <li><a style="color: white" onclick="return confirm('确认退出?' );" href="exit">退出登录</a></li>
                             </div>
                     </ul>
                 </div>
@@ -85,11 +76,10 @@
     </header>
 </main>
 
-<br><br><br><br><br><br><br><br><br><br>
-
-<div id="main" class="position-relative">
-    <div class="position-absolute top-50 start-50 translate-middle">
-        <div id="table1">
+<div id="main" style="position:sticky; margin-top: 100px; max-height: 100px" >
+    <script>getStudent()</script>
+    <div style="width: 800px; margin-left: 550px">
+        <div  id="table1">
             <div class="top">
                 <h2>学生信息管理</h2>
                 <hr/>
@@ -99,50 +89,14 @@
                 </button>
             </div>
             <br>
-            <div class="tableContainer">
-                <table class="table" id="table" width="800" frame="box" align="center">
-                    <thead>
-                    <tr>
-                        <th height="35">学号</th>
-                        <th>姓名</th>
-                        <th>性别</th>
-                        <th>入学日期</th>
-                        <th>专业</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-                        for (Student stu : stus) {
-                    %>
-                    <tr>
-                        <form method="post" action="update_student">
-                            <td height="35"><%=stu.getId()%></td>
-                            <td><input value="<%=stu.getName()%>" name="stuname" class=""></td>
-                            <td><input value="<%=stu.getSex()%>" name="stusex" class="table-input"></td>
-                            <td><%=stu.getSchool_date()%></td>
-                            <td><input value="<%=stu.getMajor()%>" name="stumajor" class="table-input" style="width: 110px"></td>
-                            <input value="<%=stu.getId()%>" name="stuno" type="hidden">
-                            <td><input type="submit" class="update-btn" value="修改">&nbsp;
-                                <a class="btn-delete" onclick="return confirm('确定要删除吗?');" href=<%="'delete_student?id=" + stu.getId() + "'"%>>
-                                    删除
-                                </a>&nbsp;&nbsp;<a href="one_page_score?id=<%=stu.getId()%>">
-                                    查看成绩
-                                </a>
-                            </td>
-                        </form>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
+            <div  id="tableContainer" class="tableContainer">
+
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal -->
+<!--学生添加的 Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form action="add_student" method="post">
@@ -186,5 +140,38 @@
     </div>
 </div>
 
+<!--学生成绩的 Modal -->
+<div class="modal fade" id="score" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h3 class="modal-title" id="scoreLable">学生成绩信息</h3>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div id="scoreModal" class="modal-body">
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+             </div>
+         </div>
+    </div>
+</div>
+
+<!--学生信息的 Modal -->
+<div class="modal fade" id="Info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="InfoLable">学生信息</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="InfoModal" class="modal-body">
+            </div>
+            <div id="InfoModalFooter" class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
