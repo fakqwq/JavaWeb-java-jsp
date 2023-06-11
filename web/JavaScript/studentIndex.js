@@ -101,8 +101,10 @@ const getName = node => {
             a.onclick = function () {
                 return confirm('确认退出?');
             }
+
             const h1 = document.createElement("h1");
             h1.innerHTML = "欢迎您，" + data;
+            h1.id = name;
             li.appendChild(h1)
             li.appendChild(a);
             ul.appendChild(li);
@@ -148,3 +150,6 @@ function LoginTeacher() {
             console.error(error);
         });
 }
+
+
+

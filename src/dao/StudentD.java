@@ -113,6 +113,16 @@ public class StudentD {
         closeConnection();
     }
 
+    public void updateStudentPwd(String pwd) throws Exception{
+        initConnection();
+        String sql = "update student set password=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, pwd);
+        ps.executeUpdate();
+        System.out.println("修改成功");
+        closeConnection();
+    }
+
     //用来获取信息
     private Student getStudent(ResultSet rs) throws SQLException {
         Student stu = null;
