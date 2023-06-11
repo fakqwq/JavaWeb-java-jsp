@@ -46,7 +46,7 @@ public class check_register extends HttpServlet {
             if (teacher != null) {
                 //向session中添加用户信息
                 session.setAttribute("info", teacher);
-                response.sendRedirect("one_page_student");
+                response.sendRedirect("main.jsp");
             } else {
                 out.print("<script>alert(\"此用户已经注册！\");location.href = \"SignUp.jsp\";</script>");
             }

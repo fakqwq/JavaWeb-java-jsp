@@ -79,7 +79,7 @@ public class TeacherD {
 
     private void initConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/aa?useSSL=false", "root", "123456");
+        conn = DriverManager.getConnection(ConnectionPool.DB_URL, ConnectionPool.DB_USER, ConnectionPool.DB_PASSWORD);
     }
 
     private void closeConnection() throws Exception {

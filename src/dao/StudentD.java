@@ -1,6 +1,7 @@
 package dao;
 
 import vo.Student;
+import vo.Teacher;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,6 +9,18 @@ import java.util.ArrayList;
 public class StudentD {
 
     private Connection conn = null;
+
+    public Student checkAccount(String id, String password) throws Exception {
+        initConnection();
+        String sql = "SELECT * FROM student WHERE id = ? AND password = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, id);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        Student student = getStudent(rs);
+        closeConnection();
+        return student;
+    }
 
     //通过id获取学生信息，存入Student对象，返回，用于修改，删除，查询，添加，登录，注册，等操作。
     public Student findWithId(String id) throws Exception{
@@ -118,7 +131,7 @@ public class StudentD {
 
     private void initConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/aa?useSSL=false", "root", "123456");
+        conn = DriverManager.getConnection(ConnectionPool.DB_URL, ConnectionPool.DB_USER, ConnectionPool.DB_PASSWORD);
     }
 
     private void closeConnection() throws Exception{

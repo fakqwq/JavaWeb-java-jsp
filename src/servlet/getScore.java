@@ -23,7 +23,6 @@ public class getScore extends HttpServlet {
 
         BufferedReader reader = req.getReader();
         String paramID = reader.readLine();
-        out.println(paramID);
         Gson gson = new Gson();
 
         if (paramID != null){

@@ -6,12 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="vo.Student" %>
 <%@ page import="vo.Teacher" %>
-<%@ page import="vo.Score" %>
-<%@ page import="dao.StudentD" %>
-<%@ page import="dao.ScoreD" %>
 <html>
 <head>
     <title>Title</title>
@@ -23,13 +18,11 @@
     <script type="text/javascript" src="JavaScript/bootstrap.min.js"></script>
     <script type="text/javascript" src="JavaScript/ConfirmPassword.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/semantic.min.css">
-    <script
-            src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="JavaScript/semantic.min.js"></script>
     <script src="JavaScript/toGetScore.js?v=4567"></script>
     <script src="JavaScript/toGetStudent.js"></script>
+    <script src="JavaScript/searchStudent.js"></script>
 </head>
 <body>
 <%
@@ -62,15 +55,15 @@
                         <a class="p-2 link-secondary" href="PersonInfo.jsp">个人信息</a>
                     </nav>
                 </div>
-                <form class="row g-3" action="one_page_student" method="post">
-                    <div class="col-auto">
+                <div class="col-auto">
+                </div>
+                <div class="col-auto ">
+                    <div class="input-group mb-3">
                         <label for="search" class="visually-hidden">Search</label>
-                        <input type="text" class="form-control" id="search" name="key" placeholder="输入学号或姓名搜索">
+                        <input type="text" class="form-control" id="search" name="key" placeholder="输入学号搜索">
+                        <button onclick="searchStudent()" id="searchbtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SingleInfo">搜索</button>
                     </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-3">搜索</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </header>
@@ -168,6 +161,24 @@
             <div id="InfoModal" class="modal-body">
             </div>
             <div id="InfoModalFooter" class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--单个学生信息的 Modal -->
+<div class="modal fade" id="SingleInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="SingleInfoLable">学生信息</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="SingleInfoModal" class="modal-body">
+
+            </div>
+            <div id="SingleInfoModalFooter" class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
             </div>
         </div>

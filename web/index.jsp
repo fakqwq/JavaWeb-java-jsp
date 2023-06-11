@@ -19,6 +19,7 @@
     <script type="text/javascript" src="JavaScript/index.js"></script>
     <script type="text/javascript" src="JavaScript/bootstrap.min.js"></script>
     <script type="text/javascript" src="JavaScript/ConfirmPassword.js"></script>
+    <script type="text/javascript" src="JavaScript/studentIndex.js"></script>
 </head>
 <body>
 <main>
@@ -31,7 +32,7 @@
                             <path d="M.01 7.753a8.137 8.137 0 0 0 .753 3.641 8 8 0 0 0 6.495 4.564 5.21 5.21 0 0 1-.785-.377h-.01l-.12-.075a5.45 5.45 0 0 1-1.56-1.463A5.543 5.543 0 0 1 6.81 5.8l.01-.004.025-.012c.208-.098.62-.292 1.167-.285.129.001.257.012.384.033a4.037 4.037 0 0 0-.993-.698l-.01-.005C6.348 4.282 5.199 4.263 5 4.263c-2.44 0-4.824 1.634-4.99 3.49Zm10.263 7.912c.088-.027.177-.054.265-.084-.102.032-.204.06-.307.086l.042-.002Z"/>
                             <path d="M10.228 15.667a5.21 5.21 0 0 0 .303-.086l.082-.025a8.019 8.019 0 0 0 4.162-3.3.25.25 0 0 0-.331-.35c-.215.112-.436.21-.663.294a6.367 6.367 0 0 1-2.243.4c-2.957 0-5.532-2.031-5.532-4.644.002-.135.017-.268.046-.399a4.543 4.543 0 0 0-.46 5.898l.003.005c.315.441.707.821 1.158 1.121h.003l.144.09c.877.55 1.721 1.078 3.328.996Z"/><use xlink:href="#bootstrap"></use></svg>
                     </a>
-                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <ul id="ulM" class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
                             <button onclick="window.location.href='SignUp.jsp'" class="btn btn-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi d-block mx-auto mb-1 bi bi-people" viewBox="0 0 16 16">
@@ -56,34 +57,12 @@
                 </div>
             </div>
         </div>
-        <div class="px-2 py-2 border-bottom mb-3">
-            <div class="container d-flex flex-wrap justify-content-between">
-                <div class="nav-scroller py-1 mb-2">
-                    <nav class="nav d-flex justify-content-between fs-5">
-                        <a class="p-2 link-secondary">个人信息</a>
-                        <a class="p-2 link-secondary">学生管理</a>
-                    </nav>
-                </div>
-                <form class="row g-3">
-                    <div class="col-auto">
-                <label for="search" class="visually-hidden">Search</label>
-                <input type="text" class="disabled form-control" id="search" placeholder="输入学号或姓名搜索">
-            </div>
-                    <div class="col-auto">
-                <button type="submit" class="disabled btn btn-primary mb-3">搜索</button>
-            </div>
-                </form>
-            </div>
-        </div>
+
     </header>
 </main>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="position-relative">
-    <div class="position-absolute top-80 start-50 translate-middle">
+
+<div  style="position:sticky; margin-top: 100px; max-height: 100px">
+    <div id="tC" style="width: 800px; margin-left: 850px">
         <?xml version="1.0" encoding="UTF-8"?>
         <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" fill="none" viewBox="0 0 24 24">
             <style>
@@ -102,14 +81,13 @@
             <circle cx="12" cy="12" r="1.972" stroke="#0A0A30" stroke-width="1.5"/>
             <path class="eye-off" stroke="#265BFF" stroke-linecap="round" stroke-width="1.5" d="M18.514 5.487L5.487 18.514"/>
         </svg>
-
         <h1>请登录！</h1>
     </div>
 </div>
 
 <!-- Modal login-->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <ul class="nav justify-content-center">
@@ -123,7 +101,7 @@
                 <main class="container col-xl-10 col-xxl-12 px-4">
                     <div class="row align-items-center g-lg-5">
                         <div class="col-md-12 mx-auto col-lg-5 ">
-                            <form class="text-center p-4 p-md-5 border rounded-3 bg-light" method="post" action="check_login">
+
                                 <div class="loadingio-spinner-bean-eater-1e10jkeuwis"><div class="ldio-h3u92sv3fpi">
                                     <div><div></div><div></div><div></div></div><div><div></div><div></div><div></div></div>
                                 </div></div>
@@ -200,22 +178,24 @@
                                 <h1 class="h3 mb-3 fw-normal">请登录</h1>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInputUserName" name="user" placeholder="UserName">
-                                    <label for="floatingInputUserName">用户名</label>
+                                    <label for="floatingInputUserName">用户名(学生为学号)</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="password" class="form-control" id="floatingInputPassword" name="password" placeholder="Password">
-                                    <label for="floatingInputPassword">密码</label>
+                                    <label for="floatingInputPassword">密码(学生默认为0)</label>
                                 </div>
-
-                                <div class="checkbox mb-3">
-                                    <label>
-                                        <input type="checkbox" value="remember"> 记住我
-                                    </label>
+                                <div style="margin-top: 10px">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="teacher">
+                                        <label class="form-check-label" for="inlineRadio1">老师</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="student">
+                                        <label class="form-check-label" for="inlineRadio2">学生</label>
+                                    </div>
                                 </div>
+                                <BUTTON data-bs-dismiss="modal" aria-label="Close" onclick="check123()"  style="margin-top: 10px" class="w-100 btn btn-lg btn-primary" value="login">登录</BUTTON>
 
-                                <BUTTON class="w-100 btn btn-lg btn-primary" type="submit" value="login">登录</BUTTON>
-
-                            </form>
                         </div>
                     </div>
                 </main>
